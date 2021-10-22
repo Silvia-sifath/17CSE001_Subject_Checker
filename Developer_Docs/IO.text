@@ -1,0 +1,67 @@
+###
+Requirements: Composer and Xamp/Wamp/Laragon must be installed.
+###
+Open a terminal/cmd/bash in the project root folder...
+If vendor Folder is not in the project
+    then run =>[  composer install  ]
+
+ To run the project in the localhost:
+    run => [ php artisan serve ]
+
+*** the url for local server will be:
+http://127.0.0.1:8000
+
+
+
+########
+For testing the api you can install Postman software.
+Input:
+There is only endpoint: http://127.0.0.1:8000/api/check_subject
+Supported Method = POST
+parameter for the request:
+[
+    hsc_math [datatype: boolean(0/1), required]
+    hsc_biology [datatype: boolean(0/1), required]
+    math_score [datatype: numeric(0,1,2,3....), required]
+    physics_score [datatype: numeric(0,1,2,3....), required]
+    chemistry_score [datatype: numeric(0,1,2,3....), required]
+    biology_score [datatype: numeric(0,1,2,3....), required]
+]
+
+####
+Output/Response [json]:
+success [true/false],
+message [A message about the response]
+subjects [Eligible Subjects if success is ture].
+######
+
+###################################################################################
+Sample input:
+{
+  "hsc_math": 1,
+  "hsc_biology": 1,
+  "math_score": 6,
+  "physics_score": 8,
+  "chemistry_score": 7,
+  "biology_score": 6
+}
+
+Sample Output:
+{
+    "success": true,
+    "message": "Eligible Subjects for 'A' unit of University of Barishal.",
+    "subjects": [
+        "Math",
+        "Physics",
+        "Computer Science and Engineering",
+        "Biochemistry and Biotechnology",
+        "Biology",
+        "Chemistry",
+        "Coastal Studies and Disaster Management",
+        "Soil & Environmental Sciences",
+        "Statistics",
+        "Geology And Mining"
+    ]
+}
+
+##################################################################################
